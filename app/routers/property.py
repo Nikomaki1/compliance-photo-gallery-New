@@ -1,6 +1,7 @@
 from fastapi import APIRouter
 from pydantic import BaseModel
 from typing import Optional
+import uuid
 
 router = APIRouter(
     prefix="/properties",
@@ -12,6 +13,12 @@ class Property(BaseModel):
     address: str
     realtor_id: int
     price: float
+
+class ImagePair(BaseModel):
+    before_url: str
+    after_url: str
+    description: str
+    compliance_id: Optional[str] = None
 
 @router.get("/{property_id}", response_model=Property)
 def get_property(property_id: int):
@@ -29,3 +36,10 @@ def create_property(property: Property):
     if property.id is None:
         property.id = 101 # Dummy generated ID
     return property
+
+@router.post("/{property_id}/upload-pair", response_model=ImagePair)
+def upload_property_pair(property_id: int, image_pair: ImagePair):
+    # Generate a unique compliance_id
+    if not image_pair.compliance_id:
+        image_pair.compliance_id = f"COMP-{uuid.uuid4().hex[:8].upper()}"
+    return image_pair
