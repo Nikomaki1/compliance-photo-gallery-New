@@ -1,4 +1,4 @@
-from pydantic import BaseModel, ConfigDict
+from pydantic import BaseModel, ConfigDict, Field
 from typing import Optional
 
 class ImagePair(BaseModel):
@@ -7,7 +7,7 @@ class ImagePair(BaseModel):
     original_url: str
     edited_url: str
     description: str
-    compliance_id: Optional[str] = None
+    compliance_id: Optional[str] = Field(None, min_length=8, max_length=8)
     
     model_config = ConfigDict(from_attributes=True)
 
