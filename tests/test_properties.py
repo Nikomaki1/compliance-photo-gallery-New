@@ -48,8 +48,8 @@ def test_property_with_two_images():
     img_resp_1 = client.post(
         f"/properties/{property_id}/upload-pair",
         json={
-            "before_url": "https://images.com/before1.jpg",
-            "after_url": "https://images.com/after1.jpg",
+            "original_url": "https://images.com/before1.jpg",
+            "edited_url": "https://images.com/after1.jpg",
             "description": "Fixed roof leak"
         }
     )
@@ -59,8 +59,8 @@ def test_property_with_two_images():
     img_resp_2 = client.post(
         f"/properties/{property_id}/upload-pair",
         json={
-            "before_url": "https://images.com/before2.jpg",
-            "after_url": "https://images.com/after2.jpg",
+            "original_url": "https://images.com/before2.jpg",
+            "edited_url": "https://images.com/after2.jpg",
             "description": "Repainted exterior"
         }
     )

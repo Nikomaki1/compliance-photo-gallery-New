@@ -15,13 +15,13 @@ def create_property(db: Session, address: str, realtor_id: int, price: float, di
     db.refresh(db_property)
     return db_property
 
-def add_image_pair(db: Session, property_id: int, before_url: str, after_url: str, description: str, compliance_id: str = None):
+def add_image_pair(db: Session, property_id: int, original_url: str, edited_url: str, description: str, compliance_id: str = None):
     """Add an ImagePair to an existing property."""
     comp_id = compliance_id or f"COMP-{uuid.uuid4().hex[:8].upper()}"
     db_image_pair = orm_models.ImagePair(
         property_id=property_id,
-        before_url=before_url,
-        after_url=after_url,
+        original_url=original_url,
+        edited_url=edited_url,
         description=description,
         compliance_id=comp_id
     )

@@ -19,8 +19,8 @@ class ImagePair(Base):
 
     id = Column(Integer, primary_key=True, index=True)
     property_id = Column(Integer, ForeignKey("properties.id"))
-    before_url = Column(String)
-    after_url = Column(String)
+    original_url = Column(String)
+    edited_url = Column(String)
     description = Column(String)
     compliance_id = Column(String, unique=True, index=True)
 
