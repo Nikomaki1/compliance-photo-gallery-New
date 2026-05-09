@@ -38,5 +38,6 @@ def upload_property_pair(property_id: int, image_pair: schemas.ImagePair, db: Se
         original_url=image_pair.original_url,
         edited_url=image_pair.edited_url,
         description=image_pair.description,
+        is_structural_change=image_pair.is_structural_change,
         compliance_id=image_pair.compliance_id
     )

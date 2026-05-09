@@ -7,6 +7,7 @@ class ImagePair(BaseModel):
     original_url: str
     edited_url: str
     description: str
+    is_structural_change: bool = False
     compliance_id: Optional[str] = Field(None, min_length=8, max_length=8)
     
     model_config = ConfigDict(from_attributes=True)

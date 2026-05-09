@@ -50,7 +50,8 @@ def test_property_with_two_images():
         json={
             "original_url": "https://images.com/before1.jpg",
             "edited_url": "https://images.com/after1.jpg",
-            "description": "Fixed roof leak"
+            "description": "Fixed roof leak",
+            "is_structural_change": True
         }
     )
     assert img_resp_1.status_code == 200

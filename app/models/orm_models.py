@@ -1,4 +1,4 @@
-from sqlalchemy import Column, Integer, String, Float, ForeignKey
+from sqlalchemy import Column, Integer, String, Float, ForeignKey, Boolean
 from sqlalchemy.orm import relationship
 from app.database import Base
 
@@ -22,6 +22,7 @@ class ImagePair(Base):
     original_url = Column(String)
     edited_url = Column(String)
     description = Column(String)
+    is_structural_change = Column(Boolean, default=False)
     compliance_id = Column(String, unique=True, index=True)
 
     property = relationship("Property", back_populates="image_pairs")
