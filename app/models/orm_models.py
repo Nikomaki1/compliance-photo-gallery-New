@@ -9,6 +9,7 @@ class Property(Base):
     address = Column(String, index=True)
     realtor_id = Column(Integer)
     price = Column(Float)
+    disclosure_status = Column(String, default="Pending")
 
     # Establish the link between a property and its submitted ImagePairs
     image_pairs = relationship("ImagePair", back_populates="property")
